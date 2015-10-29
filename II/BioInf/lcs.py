@@ -23,7 +23,7 @@ if __name__ == "__main__":
             time.sleep(0.5)
             
             
-    print "The longest common subsequence of %s and %s has length %d" % (s1, s1, mtx[l1][l2])
+    print "The longest common subsequence of %s and %s has length %d" % (s1, s2, mtx[l1][l2])
             
     
             
