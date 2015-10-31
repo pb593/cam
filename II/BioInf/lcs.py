@@ -7,8 +7,8 @@ pp = pprint.PrettyPrinter()
 
 
 if __name__ == "__main__":
-    s1 = "tgcata"
-    s2 = "atctgat"
+    s1 = "abdce"
+    s2 = "abecdx"
     
     l1 = len(s1)
     l2 = len(s2)
