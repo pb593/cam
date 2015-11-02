@@ -1,3 +1,5 @@
+1. Global and local alignment
+
 1.1. (Code in align.py) To implement the affine cost model, we would need to keep three matrices instead of one. Suppose:
 
 	V(i, j) - matrix holding the score of (i, j) given that the arrow there is pointing upwards
@@ -33,7 +35,7 @@ i is vertical axis and j is horizontal axis.
 
 1.3. match > gap && match > mismatch
 
-In the case of local alignment, we want to concentrate on continuous regions of local similarity -- we give larger penalties for gaps and mismatches.
+In the case of local alignment, we want to concentrate on continuous (or almost continuous) regions of local similarity -- we give larger penalties for gaps and mismatches.
 
 Long local matches are less likely to be accidental. We can define a heuristic metric which would give higher results for alignments with a large number of consequtive matches.
 For example, let's say:
@@ -41,4 +43,18 @@ For example, let's say:
 	I (a) = (sum of squares of lengths of all consequtive match sequences) * 
 																	score of alignment
 	
+	
+	
+2. RNA folding
 
+2.1. (code in nussinov.py) Implemented, works.
+2.2. We need to prohibit the matches between consequtive bases. E.g. we need to assign a -100500 penalty for matching A and U if one follows the other. Implemented, works.
+
+
+
+
+3. Questions, doubts and observations
+	
+1) I noticed that the answers given by my Nussinov algo are different from the ones shown in exercise1.pdf, but DO contain the same number of pairs (i.e. have the same score). In particular, my answers seem to be less symmetrical than those in exercise1.pdf. I managed to correct it by making the matching reward proporational to the distance between the bases in the string (i.e. abs(i-j) instead of just 1), thereby prioritising solutions that are more 'spread out'. Are there any caveats to this? Can this result in an incorrect/suboptimal solution?
+
+2) It turns out that global and local alignment do not differ in anything apart from penalty/score parameters. So, is there any concrete border between local and global, or is it like a continuous spectrum regulated by parameters?

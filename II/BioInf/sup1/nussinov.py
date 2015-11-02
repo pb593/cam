@@ -4,9 +4,12 @@
 import pprint
 pp = pprint.PrettyPrinter()
 
-def delta(a, b):
+def delta(seq, i, j):
     # returns 1 if (a,b) is a base pair and 0 otherwise
-    return 1 if ((a, b) in [('A', 'U'), ('U', 'A'), ('C', 'G'), ('G', 'C')]) else 0
+    if(abs(i - j) == 1): # penalise zero-length loops severely
+        return -100500
+    else:
+        return abs(i - j) if ((seq[i], seq[j]) in [('A', 'U'), ('U', 'A'), ('C', 'G'), ('G', 'C')]) else 0
 
 def fold(seq):
     l = len(seq)
@@ -24,11 +27,11 @@ def fold(seq):
         for j in range(i + 1, l + 1): # from i + 1st to lth symbol, inclusive
             below = gamma[i - 1 + 1][j - 1]
             left = gamma[i - 1][j - 1 - 1]
-            diag = gamma[i - 1 + 1][j - 1 - 1] + delta(seq[i-1], seq[j-1])
+            diag = gamma[i - 1 + 1][j - 1 - 1] + delta(seq, i - 1, j - 1)
             
             # bifurcation
             biflist  = [gamma[i - 1][k - 1] + gamma[k - 1 + 1][j - 1] for k in range(i + 1, j)]
-            bif = max(biflist) if len(biflist) != 0 else 0
+            bif = max(biflist) if len(biflist) != 0 else None
             
             
             gamma[i - 1][j - 1] = max([below, left, diag, bif])
@@ -44,13 +47,10 @@ def fold(seq):
         if i > j:
             continue
         elif(gamma[i - 1 + 1][j - 1] == gamma[i - 1][j - 1]):
-            # print seq[i - 1]
             stack.append((i + 1, j))
         elif(gamma[i - 1][j - 1 - 1] == gamma[i - 1][j - 1]):
-            # print "    " + seq[j - 1]
             stack.append((i, j - 1))
-        elif(gamma[i - 1 + 1][j - 1 - 1] + delta(seq[i-1], seq[j-1]) == gamma[i - 1][j - 1]):
-            #print seq[i - 1] + " -- " + seq[j - 1]
+        elif(gamma[i - 1 + 1][j - 1 - 1] + delta(seq, i - 1, j - 1) == gamma[i - 1][j - 1]):
             rst[i - 1] = "("
             rst[j - 1] = ")"
             stack.append((i + 1, j - 1))
@@ -68,7 +68,7 @@ def fold(seq):
 
 if __name__ == "__main__":
     
-    strings = ["GGGAAAUCC", "CCUUAAGGAGAGAGCCUUAAGG", "AAGUUCGGUCC"]
+    strings = ["GGGAAAUCC", "CCUUAAGGAGAGAGCCUUAAGG", "AAGUUCGGUCC", "AAAUUU"]
     
     for s in strings:
         r = fold(s)
