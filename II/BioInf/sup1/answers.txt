@@ -1,0 +1,44 @@
+1.1. (Code in align.py) To implement the affine cost model, we would need to keep three matrices instead of one. Suppose:
+
+	V(i, j) - matrix holding the score of (i, j) given that the arrow there is pointing upwards
+	H(i, j) - matrix holding the score of (i, j) given that the arrow there is pointing left
+	S(i, j) - matrix holding the actual score of (i, j)
+	
+The matrices are realted as follows:
+	
+	S(i, j) = max {
+					V(i, j)
+					H(i, j)
+					S(i-1, j-1) + delta(i, j)
+				}
+				
+				
+	V(i, j) = max {
+					V(i-1, j) + e
+					S(i-1, j) + d
+				}
+				
+				
+	H(i, j) = max {
+					H(i, j-1) + e
+					S(i, j-1) + d
+				}
+				
+				
+where e is penalty for gap extension, and d is penalty for gap opening,
+i is vertical axis and j is horizontal axis.
+
+
+1.2. We can construct the so-called edit graph -- each cell in the matrix will correspond to a node in the graph. Then we'll connect each node to the ones just below, just to the right and diagonally below-right with a edges whose weights would correspond to penalties for mismatches and gaps, or rewards for matches. Then the problem of alignment would boild down to finding the max-path in the edit graph.
+
+1.3. match > gap && match > mismatch
+
+In the case of local alignment, we want to concentrate on continuous regions of local similarity -- we give larger penalties for gaps and mismatches.
+
+Long local matches are less likely to be accidental. We can define a heuristic metric which would give higher results for alignments with a large number of consequtive matches.
+For example, let's say:
+
+	I (a) = (sum of squares of lengths of all consequtive match sequences) * 
+																	score of alignment
+	
+

@@ -1,13 +1,12 @@
 #!/usr/bin/python
-
 # Alignment, global and local
+
 import argparse, pprint, sys
 
 pp = pprint.PrettyPrinter()
 
 class Pointer:
     none, up, left, diag = range(4)
-    ucode = {up: "\u2191", left: "\u2190", diag: "\u2196", none: "\u0000"}
     
 
 def align(str1, str2, params_dict): # creates the alignment matrix and returns it
