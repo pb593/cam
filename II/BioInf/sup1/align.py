@@ -94,7 +94,7 @@ if __name__ == "__main__":
     print "*******************************************"
     print "Local alignment: %s <-> %s" % (str1, str2)
     
-    mtx = align(str1, str2, {'match' : 1, 'gap': -2, 'mismatch' : -1})
+    mtx = align(str1, str2, {'match' : 1, 'gap': -2, 'mismatch' : -1}) # gaps at the end 
     pretty_print(str1, str2, mtx)
     
     print "Score: %d" % mtx[len(str1)][len(str2)][0]

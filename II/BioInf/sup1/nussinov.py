@@ -1,6 +1,9 @@
 #!/usr/bin/python
 # Nussinov RNA structure prediction
 
+# Comments:
+# Compexity is O(n^3)
+
 import pprint
 pp = pprint.PrettyPrinter()
 
