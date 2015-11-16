@@ -27,7 +27,7 @@ if __name__ == "__main__":
             for state in range(3):
                 base_index = alpha.index(s[s_index - 1])
                 V[state][s_index] = e[state][base_index] * \
-                        max([ V[k][s_index-1] for k in range(3) ])
+                        max([ V[k][s_index-1] * T[k][state] for k in range(3) ])
                 
         # now, trace back choosing the max at each step
         l_states = []
