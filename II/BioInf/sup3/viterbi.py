@@ -1,6 +1,7 @@
 #! /usr/bin/python
 # -*- coding: utf-8 -*-
 
+
 alpha = ['a', 't', 'c', 'g'] # list of codons
 
 e = [[0, 0, 0, 0], # just padding, nothing is emitted in starting state

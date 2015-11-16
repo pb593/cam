@@ -1,0 +1,5 @@
+Answer to 1.3:
+a) Had to delete nine characters to remove the island.
+b) If we want to model the average of 400-chars long CpG islands, we just need
+to set T(2, 1) to 1/401, meaning that we stay in the CpG state for an
+average of 400 emissions before we transition out of it. T(2, 2) will become 1 - T(2, 1) = 400/401.
