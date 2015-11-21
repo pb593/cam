@@ -10,6 +10,10 @@ rst1 = transpose(mtimes(A, transpose(b)))
 % Now, let's do it using the conv func
 rst2 = conv(fliplr(a), b)
 
+% Now let's try to undo the convolution
+origb = int8(transpose(A \ transpose(rst2)))
+origa = fliplr(deconv(rst2, b))
+
 
 
 
