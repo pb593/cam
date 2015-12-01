@@ -1,0 +1,11 @@
+1. Discrete Fourier Transform (DFT) is matrix transform that takes a sample
+   vector and outputs a vector of frequency components. It works in O(n^2)
+   time.
+
+2. Fast Fourier Transform (FFT) is a more efficient algorithm to perform 
+   DFT. It takes advantage of symmetric properties of the DFT matrix, 
+   reducing the run time of the algorithm to O(n*log(n))
+
+3. FFTW (Fastest Fourier Transform in the West) ? a really fast low-level
+   implementation of FFT written in C. Supports architecture-specific
+   optimisations and non-power-of-2 sizes.
