@@ -1,0 +1,42 @@
+\documentclass[a4paper, 12pt]{scrartcl}
+
+\usepackage{hyperref, url}
+
+% command definitions
+\newcommand{\subject}[1]{\title{#1}}
+\newcommand{\supNo}[1]{\subtitle{Supervision Work #1}}
+\newcommand{\student}[2]{\author{\href{#2}{#1}}}
+
+
+% environment defs
+\newenvironment{question}[1]{
+    \section*{Question #1}
+    \subsection*{Question}
+    \begin{itshape}
+}
+{
+    \end{itshape}
+}
+
+\newenvironment{answer}{
+    \subsection*{Answer}
+}
+
+%==================== ACTUAL Content================================
+\student{Pavel Berkovich}{mailto:pb593@cam.ac.uk}
+\subject{Comparative Architectures}
+\supNo{3}
+
+
+\begin{document}
+\maketitle
+
+\begin{question}{1}
+    Hello!
+\end{question}
+\begin{answer}
+    Hi!
+\end{answer}
+
+
+\end{document}
