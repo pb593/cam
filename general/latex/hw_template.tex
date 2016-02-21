@@ -3,13 +3,22 @@
 \usepackage{hyperref, url}
 \usepackage{listings}
 \usepackage{enumerate}
-\usepackage{amsmath}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{xargs, xifthen}   
 
 % command definitions
 \newcommand{\subject}[1]{\title{#1}}
 \newcommand{\supNo}[1]{\subtitle{Supervision Work #1}}
 \newcommand{\student}[2]{\author{\href{#2}{#1}}}
-
+\newcommandx{\image}[3][3={}]{
+    \begin{figure}[th!]
+        \centering
+        \includegraphics[width = #2\textwidth]{#1}
+        \ifthenelse{\equal{#3}{}}{}{\caption{#3}
+        }
+    \end{figure}
+}
 
 % environment defs
 \newenvironment{question}[1]{
