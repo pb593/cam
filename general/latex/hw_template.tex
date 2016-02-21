@@ -3,6 +3,7 @@
 \usepackage{hyperref, url}
 \usepackage{listings}
 \usepackage{enumerate}
+\usepackage{amsmath}
 
 % command definitions
 \newcommand{\subject}[1]{\title{#1}}
@@ -31,6 +32,9 @@
         breaklines=true,
         columns=fullflexible}
 }{}
+
+\newenvironment{doubts}{\section*{Questions and Doubts}
+                        \begin{itemize}}{\end{itemize}}
 
 %==================== ACTUAL Content================================
 \student{Pavel Berkovich}{mailto:pb593@cam.ac.uk}
