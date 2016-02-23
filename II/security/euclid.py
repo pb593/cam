@@ -40,9 +40,10 @@ def modinv(a, n, out):
 		return None
 	else:
 		if(out):
-			print("Inverse for %d in Z%d is %d" % (a, n, x % n))
+			print("Inverse for %d in Z(%d) is %d" % (a, n, x % n))
 
 if __name__ == "__main__": 
 	gcd(36, 24, True)
 	egcd(733810016255931844845,1187329547587210582322, True)
 	modinv(806515533049393, 1304969544928657, True)
+	modinv(892302390667940581330701, 1208925819614629174706111, True)
