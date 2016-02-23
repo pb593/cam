@@ -4,21 +4,24 @@
 \usepackage{listings}
 \usepackage{enumerate}
 \usepackage{amsmath, amssymb}
-\usepackage{graphicx}
-\usepackage{xargs, xifthen}   
+\usepackage{graphicx, float}
+\usepackage{xargs, xifthen}
+\usepackage{caption}
 
 % command definitions
 \newcommand{\subject}[1]{\title{#1}}
 \newcommand{\supNo}[1]{\subtitle{Supervision Work #1}}
 \newcommand{\student}[2]{\author{\href{#2}{#1}}}
 \newcommandx{\image}[3][3={}]{
-    \begin{figure}[th!]
+    \begin{figure}[H]
         \centering
         \includegraphics[width = #2\textwidth]{#1}
         \ifthenelse{\equal{#3}{}}{}{\caption{#3}
         }
     \end{figure}
+    \noindent
 }
+\newcommand{\newpar}{\vspace{0.5cm}\noindent}
 
 % environment defs
 \newenvironment{question}[1]{
@@ -32,7 +35,7 @@
 
 \newenvironment{answer}{
     \subsection*{Answer}
-}{\par}
+}{\newpar}
 
 \newenvironment{abc}{\begin{enumerate}[(a)]}{\end{enumerate}}
 \lstnewenvironment{code}{
