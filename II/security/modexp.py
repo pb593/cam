@@ -13,7 +13,7 @@ def modexp(g, e, m):
         pow2 = pow2 * 2
         a = (a * a) % m
     
-    return b 
+    return b
         
     
 
